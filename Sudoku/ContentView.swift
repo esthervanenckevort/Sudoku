@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    var puzzle: [[Content]] = [
+        [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
+    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
+    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
+    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
+    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
+    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
+    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
+    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
+    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)]
+    ]
     var body: some View {
-        Text("Hello, World!")
+        Board(puzzle: puzzle)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

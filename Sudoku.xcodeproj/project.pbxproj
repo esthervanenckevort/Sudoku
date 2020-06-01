@@ -12,6 +12,9 @@
 		EB68E1F52484F3E0000B7BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB68E1F42484F3E0000B7BE5 /* Assets.xcassets */; };
 		EB68E1F82484F3E0000B7BE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB68E1F72484F3E0000B7BE5 /* Preview Assets.xcassets */; };
 		EB68E1FB2484F3E0000B7BE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB68E1F92484F3E0000B7BE5 /* Main.storyboard */; };
+		EB68E2052484F408000B7BE5 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E2042484F408000B7BE5 /* Cell.swift */; };
+		EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E2082484F72A000B7BE5 /* Grid.swift */; };
+		EB68E20B2484FA75000B7BE5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E20A2484FA75000B7BE5 /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		EB68E1FA2484F3E0000B7BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB68E1FC2484F3E0000B7BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB68E1FD2484F3E0000B7BE5 /* Sudoku.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sudoku.entitlements; sourceTree = "<group>"; };
+		EB68E2042484F408000B7BE5 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		EB68E2082484F72A000B7BE5 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		EB68E20A2484FA75000B7BE5 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,7 @@
 		EB68E1EF2484F3DE000B7BE5 /* Sudoku */ = {
 			isa = PBXGroup;
 			children = (
+				EB68E2032484F3EF000B7BE5 /* Views */,
 				EB68E1F02484F3DE000B7BE5 /* AppDelegate.swift */,
 				EB68E1F22484F3DE000B7BE5 /* ContentView.swift */,
 				EB68E1F42484F3E0000B7BE5 /* Assets.xcassets */,
@@ -72,6 +79,16 @@
 				EB68E1F72484F3E0000B7BE5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EB68E2032484F3EF000B7BE5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB68E2042484F408000B7BE5 /* Cell.swift */,
+				EB68E2082484F72A000B7BE5 /* Grid.swift */,
+				EB68E20A2484FA75000B7BE5 /* Board.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +164,9 @@
 			files = (
 				EB68E1F32484F3DE000B7BE5 /* ContentView.swift in Sources */,
 				EB68E1F12484F3DE000B7BE5 /* AppDelegate.swift in Sources */,
+				EB68E20B2484FA75000B7BE5 /* Board.swift in Sources */,
+				EB68E2052484F408000B7BE5 /* Cell.swift in Sources */,
+				EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
