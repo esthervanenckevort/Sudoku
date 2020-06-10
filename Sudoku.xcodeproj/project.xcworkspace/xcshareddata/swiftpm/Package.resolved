@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SudokuKit",
+        "repositoryURL": "git@github.com:esthervanenckevort/SudokuKit.git",
+        "state": {
+          "branch": null,
+          "revision": "164d178a7fd67a8e4c78aac024729f95164acf25",
+          "version": "0.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

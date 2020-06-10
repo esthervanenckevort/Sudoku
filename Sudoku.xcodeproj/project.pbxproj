@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB181DDB24915F3100887D2F /* NumberGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB181DDA24915F3100887D2F /* NumberGrid.swift */; };
 		EB68E1F12484F3DE000B7BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E1F02484F3DE000B7BE5 /* AppDelegate.swift */; };
 		EB68E1F32484F3DE000B7BE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E1F22484F3DE000B7BE5 /* ContentView.swift */; };
 		EB68E1F52484F3E0000B7BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB68E1F42484F3E0000B7BE5 /* Assets.xcassets */; };
@@ -15,9 +16,14 @@
 		EB68E2052484F408000B7BE5 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E2042484F408000B7BE5 /* Cell.swift */; };
 		EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E2082484F72A000B7BE5 /* Grid.swift */; };
 		EB68E20B2484FA75000B7BE5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E20A2484FA75000B7BE5 /* Board.swift */; };
+		EB980A70248D20CB00D8B4E1 /* SudokuKit in Frameworks */ = {isa = PBXBuildFile; productRef = EB980A6F248D20CB00D8B4E1 /* SudokuKit */; };
+		EB980A74248D227100D8B4E1 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB980A73248D227100D8B4E1 /* MainScreen.swift */; };
+		EBE795E62491472B0011B8A7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE795E52491472B0011B8A7 /* Game.swift */; };
+		EBE795E8249147FD0011B8A7 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE795E7249147FD0011B8A7 /* Value.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB181DDA24915F3100887D2F /* NumberGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberGrid.swift; sourceTree = "<group>"; };
 		EB68E1ED2484F3DE000B7BE5 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB68E1F02484F3DE000B7BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB68E1F22484F3DE000B7BE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,6 +35,9 @@
 		EB68E2042484F408000B7BE5 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		EB68E2082484F72A000B7BE5 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		EB68E20A2484FA75000B7BE5 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		EB980A73248D227100D8B4E1 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		EBE795E52491472B0011B8A7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		EBE795E7249147FD0011B8A7 /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB980A70248D20CB00D8B4E1 /* SudokuKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +71,7 @@
 		EB68E1EF2484F3DE000B7BE5 /* Sudoku */ = {
 			isa = PBXGroup;
 			children = (
+				EB980A72248D225A00D8B4E1 /* ViewModels */,
 				EB68E2032484F3EF000B7BE5 /* Views */,
 				EB68E1F02484F3DE000B7BE5 /* AppDelegate.swift */,
 				EB68E1F22484F3DE000B7BE5 /* ContentView.swift */,
@@ -87,8 +98,19 @@
 				EB68E2042484F408000B7BE5 /* Cell.swift */,
 				EB68E2082484F72A000B7BE5 /* Grid.swift */,
 				EB68E20A2484FA75000B7BE5 /* Board.swift */,
+				EB181DDA24915F3100887D2F /* NumberGrid.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		EB980A72248D225A00D8B4E1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EB980A73248D227100D8B4E1 /* MainScreen.swift */,
+				EBE795E52491472B0011B8A7 /* Game.swift */,
+				EBE795E7249147FD0011B8A7 /* Value.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +129,9 @@
 			dependencies = (
 			);
 			name = Sudoku;
+			packageProductDependencies = (
+				EB980A6F248D20CB00D8B4E1 /* SudokuKit */,
+			);
 			productName = Sudoku;
 			productReference = EB68E1ED2484F3DE000B7BE5 /* Sudoku.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +160,9 @@
 				Base,
 			);
 			mainGroup = EB68E1E42484F3DE000B7BE5;
+			packageReferences = (
+				EB980A6E248D20CB00D8B4E1 /* XCRemoteSwiftPackageReference "SudokuKit" */,
+			);
 			productRefGroup = EB68E1EE2484F3DE000B7BE5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -162,10 +190,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB980A74248D227100D8B4E1 /* MainScreen.swift in Sources */,
 				EB68E1F32484F3DE000B7BE5 /* ContentView.swift in Sources */,
+				EBE795E62491472B0011B8A7 /* Game.swift in Sources */,
+				EBE795E8249147FD0011B8A7 /* Value.swift in Sources */,
 				EB68E1F12484F3DE000B7BE5 /* AppDelegate.swift in Sources */,
 				EB68E20B2484FA75000B7BE5 /* Board.swift in Sources */,
 				EB68E2052484F408000B7BE5 /* Cell.swift in Sources */,
+				EB181DDB24915F3100887D2F /* NumberGrid.swift in Sources */,
 				EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +397,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB980A6E248D20CB00D8B4E1 /* XCRemoteSwiftPackageReference "SudokuKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:esthervanenckevort/SudokuKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB980A6F248D20CB00D8B4E1 /* SudokuKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB980A6E248D20CB00D8B4E1 /* XCRemoteSwiftPackageReference "SudokuKit" */;
+			productName = SudokuKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB68E1E52484F3DE000B7BE5 /* Project object */;
 }

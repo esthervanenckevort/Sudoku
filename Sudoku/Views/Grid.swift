@@ -30,7 +30,7 @@ struct Grid<Cell>: View where Cell: View{
 struct Grid_Previews: PreviewProvider {
     static var previews: some View {
         Grid(rows: 3, columns: 3) { (row, column) in
-            return Cell {
+            return Cell(tapAction: {}) {
                 Text("\(row * 3 + column + 1)")
             }
         }

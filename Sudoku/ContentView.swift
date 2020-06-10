@@ -7,22 +7,20 @@
 //
 
 import SwiftUI
+import SudokuKit
 
 struct ContentView: View {
-    var puzzle: [[Content]] = [
-        [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
-    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
-    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
-    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
-    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
-    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
-    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
-    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)],
-    [.fixed(1), .fixed(2), . fixed(3), .fixed(4), . fixed(5), .fixed(6), .fixed(7), .fixed(8), .fixed(9)]
-    ]
+    let model = MainScreen()
+
     var body: some View {
-        Board(puzzle: puzzle)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        NavigationView {
+//            NavigationLink(destination: Board(game: model.newGame())) {
+//                Text("New Game")
+//            }
+//            .padding()
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        }
+        Board(game: model.newGame())
     }
 }
 
