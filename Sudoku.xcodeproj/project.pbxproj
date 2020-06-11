@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EB181DDB24915F3100887D2F /* NumberGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB181DDA24915F3100887D2F /* NumberGrid.swift */; };
 		EB68E1F12484F3DE000B7BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E1F02484F3DE000B7BE5 /* AppDelegate.swift */; };
-		EB68E1F32484F3DE000B7BE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E1F22484F3DE000B7BE5 /* ContentView.swift */; };
 		EB68E1F52484F3E0000B7BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB68E1F42484F3E0000B7BE5 /* Assets.xcassets */; };
 		EB68E1F82484F3E0000B7BE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB68E1F72484F3E0000B7BE5 /* Preview Assets.xcassets */; };
 		EB68E1FB2484F3E0000B7BE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB68E1F92484F3E0000B7BE5 /* Main.storyboard */; };
@@ -18,8 +17,11 @@
 		EB68E20B2484FA75000B7BE5 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E20A2484FA75000B7BE5 /* GameView.swift */; };
 		EB980A70248D20CB00D8B4E1 /* SudokuKit in Frameworks */ = {isa = PBXBuildFile; productRef = EB980A6F248D20CB00D8B4E1 /* SudokuKit */; };
 		EBC0007524922F2000C2C245 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007424922F2000C2C245 /* BoardCell.swift */; };
-		EBC0007724922F7000C2C245 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007624922F7000C2C245 /* SquareView.swift */; };
-		EBC000792492300400C2C245 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC000782492300400C2C245 /* BoardView.swift */; };
+		EBC0007724922F7000C2C245 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007624922F7000C2C245 /* Square.swift */; };
+		EBC000792492300400C2C245 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC000782492300400C2C245 /* Board.swift */; };
+		EBC0007B2492984900C2C245 /* PlayingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007A2492984900C2C245 /* PlayingControls.swift */; };
+		EBC0007D249298EC00C2C245 /* NewGameControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007C249298EC00C2C245 /* NewGameControls.swift */; };
+		EBC0007F2492999100C2C245 /* SidePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007E2492999100C2C245 /* SidePanel.swift */; };
 		EBE795E62491472B0011B8A7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE795E52491472B0011B8A7 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +29,6 @@
 		EB181DDA24915F3100887D2F /* NumberGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberGrid.swift; sourceTree = "<group>"; };
 		EB68E1ED2484F3DE000B7BE5 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB68E1F02484F3DE000B7BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EB68E1F22484F3DE000B7BE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EB68E1F42484F3E0000B7BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB68E1F72484F3E0000B7BE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB68E1FA2484F3E0000B7BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,8 +38,11 @@
 		EB68E2082484F72A000B7BE5 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		EB68E20A2484FA75000B7BE5 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EBC0007424922F2000C2C245 /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
-		EBC0007624922F7000C2C245 /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
-		EBC000782492300400C2C245 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		EBC0007624922F7000C2C245 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		EBC000782492300400C2C245 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		EBC0007A2492984900C2C245 /* PlayingControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingControls.swift; sourceTree = "<group>"; };
+		EBC0007C249298EC00C2C245 /* NewGameControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameControls.swift; sourceTree = "<group>"; };
+		EBC0007E2492999100C2C245 /* SidePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePanel.swift; sourceTree = "<group>"; };
 		EBE795E52491472B0011B8A7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +80,6 @@
 				EB980A72248D225A00D8B4E1 /* ViewModels */,
 				EB68E2032484F3EF000B7BE5 /* Views */,
 				EB68E1F02484F3DE000B7BE5 /* AppDelegate.swift */,
-				EB68E1F22484F3DE000B7BE5 /* ContentView.swift */,
 				EB68E1F42484F3E0000B7BE5 /* Assets.xcassets */,
 				EB68E1F92484F3E0000B7BE5 /* Main.storyboard */,
 				EB68E1FC2484F3E0000B7BE5 /* Info.plist */,
@@ -97,13 +100,10 @@
 		EB68E2032484F3EF000B7BE5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EB68E2042484F408000B7BE5 /* Cell.swift */,
-				EB68E2082484F72A000B7BE5 /* Grid.swift */,
+				EBC0008224929D6C00C2C245 /* Utility */,
 				EB68E20A2484FA75000B7BE5 /* GameView.swift */,
-				EBC000782492300400C2C245 /* BoardView.swift */,
-				EB181DDA24915F3100887D2F /* NumberGrid.swift */,
-				EBC0007424922F2000C2C245 /* BoardCell.swift */,
-				EBC0007624922F7000C2C245 /* SquareView.swift */,
+				EBC0008024929A3600C2C245 /* SidePanel */,
+				EBC0008124929A4F00C2C245 /* PlayingBoard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +114,36 @@
 				EBE795E52491472B0011B8A7 /* Game.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		EBC0008024929A3600C2C245 /* SidePanel */ = {
+			isa = PBXGroup;
+			children = (
+				EBC0007C249298EC00C2C245 /* NewGameControls.swift */,
+				EB181DDA24915F3100887D2F /* NumberGrid.swift */,
+				EBC0007A2492984900C2C245 /* PlayingControls.swift */,
+				EBC0007E2492999100C2C245 /* SidePanel.swift */,
+			);
+			path = SidePanel;
+			sourceTree = "<group>";
+		};
+		EBC0008124929A4F00C2C245 /* PlayingBoard */ = {
+			isa = PBXGroup;
+			children = (
+				EBC000782492300400C2C245 /* Board.swift */,
+				EBC0007424922F2000C2C245 /* BoardCell.swift */,
+				EBC0007624922F7000C2C245 /* Square.swift */,
+			);
+			path = PlayingBoard;
+			sourceTree = "<group>";
+		};
+		EBC0008224929D6C00C2C245 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				EB68E2042484F408000B7BE5 /* Cell.swift */,
+				EB68E2082484F72A000B7BE5 /* Grid.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,13 +224,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBC0007524922F2000C2C245 /* BoardCell.swift in Sources */,
-				EB68E1F32484F3DE000B7BE5 /* ContentView.swift in Sources */,
 				EBE795E62491472B0011B8A7 /* Game.swift in Sources */,
-				EBC0007724922F7000C2C245 /* SquareView.swift in Sources */,
+				EBC0007D249298EC00C2C245 /* NewGameControls.swift in Sources */,
+				EBC0007F2492999100C2C245 /* SidePanel.swift in Sources */,
+				EBC0007724922F7000C2C245 /* Square.swift in Sources */,
 				EB68E1F12484F3DE000B7BE5 /* AppDelegate.swift in Sources */,
 				EB68E20B2484FA75000B7BE5 /* GameView.swift in Sources */,
 				EB68E2052484F408000B7BE5 /* Cell.swift in Sources */,
-				EBC000792492300400C2C245 /* BoardView.swift in Sources */,
+				EBC0007B2492984900C2C245 /* PlayingControls.swift in Sources */,
+				EBC000792492300400C2C245 /* Board.swift in Sources */,
 				EB181DDB24915F3100887D2F /* NumberGrid.swift in Sources */,
 				EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */,
 			);

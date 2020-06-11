@@ -9,15 +9,12 @@
 import SwiftUI
 
 struct Cell<Content>: View where Content: View {
-    var frame = CGSize(width: 50, height: 50)
+    var size = CGSize(width: 50, height: 50)
     var border: Color? = .gray
-    var highlight: Color? = .clear
     var contentProvider: () -> Content
     var body: some View {
         contentProvider()
-            .background(highlight ?? Color.clear)
-            .padding(1)
-            .frame(width: frame.width, height: frame.height, alignment: .center)
+            .frame(width: size.width, height: size.height, alignment: .center)
             .border(border ?? Color.clear)
     }
 }

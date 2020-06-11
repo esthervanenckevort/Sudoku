@@ -14,7 +14,7 @@ struct GameView: View {
 
     var body: some View {
         return HStack(alignment: .top) {
-            BoardView(game: game)
+            Board(game: game)
             VStack {
                 NumberGrid(number: $game.mark)
                 Toggle("Annotating", isOn: $game.annotating)
@@ -24,7 +24,7 @@ struct GameView: View {
     }
 }
 
-struct BoardView: View {
+struct Board: View {
     @ObservedObject var game: Game
     var body: some View {
         Grid<SquareView>(rows: 3, columns: 3) { (row, column) in

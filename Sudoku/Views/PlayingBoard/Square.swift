@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct SquareView: View {
-    @ObservedObject var game: Game
+struct Square: View {
+    @EnvironmentObject private var game: Game
     var row: Int
     var column: Int
     var body: some View {
@@ -17,15 +17,16 @@ struct SquareView: View {
             let index = self.row * 27 + cellRow * 9 + self.column * 3 + cellColumn
             let row = index / 9
             let column = index % 9
-            return BoardCell(game: self.game, row: row, column: column)
+            return BoardCell(row: row, column: column)
         }.border(Color.black, width: 2)
     }
 }
 
 #if DEBUG
-struct SquareView_Previews: PreviewProvider {
+struct Square_Previews: PreviewProvider {
     static var previews: some View {
-        SquareView(game: Game(), row: 0, column: 0)
+        Square(row: 0, column: 0)
+            .environmentObject(Game())
     }
 }
 #endif

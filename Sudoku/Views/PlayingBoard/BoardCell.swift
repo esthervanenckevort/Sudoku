@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct BoardCell: View {
-    @ObservedObject var game: Game
+    @EnvironmentObject private var game: Game
     var row: Int
     var column: Int
     var body: some View {
@@ -31,7 +31,7 @@ struct BoardCell: View {
                         .foregroundColor(background)
                     Grid<Cell<Text>>(rows: 3, columns: 3) { (cellRow, cellColumn) in
                         let option = cellRow * 3 + cellColumn + 1
-                        return Cell(frame: CGSize(width: 15, height: 15), border: .clear) { Text(numbers.contains(option) ? "\(option)" : " ")
+                        return Cell(size: CGSize(width: 15, height: 15), border: .clear) { Text(numbers.contains(option) ? "\(option)" : " ")
                             .foregroundColor(self.color(for: option) ?? .gray)
                             .font(.footnote)
                         }
@@ -82,6 +82,7 @@ struct BoardCell: View {
 
 struct BoardCell_Previews: PreviewProvider {
     static var previews: some View {
-        BoardCell(game: Game(), row: 0, column: 0)
+        BoardCell(row: 0, column: 0)
+            .environmentObject(Game())
     }
 }

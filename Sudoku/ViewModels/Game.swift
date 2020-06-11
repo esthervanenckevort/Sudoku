@@ -29,11 +29,14 @@ class Game: ObservableObject {
     }
 
     func check() {
+        annotating = false
+        highlighting = false
+        mark = 0
         _ = playingBoard.submit()
     }
 
-    func newGame() {
-        playingBoard = PlayingBoard()
+    func newGame(given: Int = 36) {
+        playingBoard = PlayingBoard(given: given)
         annotating = false
         highlighting = false
         mark = Int.random(in: 1...9)
@@ -47,8 +50,8 @@ class Game: ObservableObject {
         return playingBoard.isValidOption(value: mark, forRow: row, column: column)
     }
 
-    init() {
-        playingBoard = PlayingBoard()
+    init(given: Int = 36) {
+        playingBoard = PlayingBoard(given: given)
         annotating = false
         highlighting = false
         mark = Int.random(in: 1...9)
