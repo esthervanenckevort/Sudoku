@@ -19,20 +19,20 @@ struct BoardCell: View {
         case .fixed(let number):
             view = AnyView(ZStack {
                     Rectangle()
-                        .foregroundColor(.clear)
+                        .foregroundColor(background)
                     Text("\(number)")
                         .font(.title)
-                        .foregroundColor(.black)
+                        .foregroundColor(color(for: number) ?? .black)
                 })
         case .options(let numbers):
             view = AnyView(
                 ZStack {
                     Rectangle()
-                        .foregroundColor(.clear)
+                        .foregroundColor(background)
                     Grid<Cell<Text>>(rows: 3, columns: 3) { (cellRow, cellColumn) in
                         let option = cellRow * 3 + cellColumn + 1
                         return Cell(frame: CGSize(width: 15, height: 15), border: .clear) { Text(numbers.contains(option) ? "\(option)" : " ")
-                            .foregroundColor(.gray)
+                            .foregroundColor(self.color(for: option) ?? .gray)
                             .font(.footnote)
                         }
                     }
@@ -41,9 +41,9 @@ struct BoardCell: View {
             view = AnyView(
                 ZStack {
                     Rectangle()
-                        .foregroundColor(.clear)
+                        .foregroundColor(background)
                     Text("\(number)")
-                        .foregroundColor(.blue)
+                        .foregroundColor(color(for: number) ?? .blue)
                         .font(.title)
                 })
         }
@@ -54,6 +54,26 @@ struct BoardCell: View {
                 self.game.mark(row: self.row, column: self.column)
             }
     }
+
+    private func color(for number: Int) -> Color? {
+        if game.highlighting {
+            return number == game.mark ? .red : .gray
+        }
+        return nil
+    }
+
+    private var background: Color {
+        guard game.highlighting else {
+            return .clear
+        }
+        switch game.board[row][column] {
+        case .fixed(_), .selected(_):
+            return .clear
+        case .options(_):
+            return game.isValidOption(row: row, column: column) ? .white : .clear
+        }
+    }
+
 }
 
 

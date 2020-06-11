@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import SudokuKit
+import SwiftUI
 
 class Game: ObservableObject {
     private var puzzle: Puzzle
@@ -39,6 +40,56 @@ class Game: ObservableObject {
                 board[row][column] = .options(Set.empty)
             }
         }
+    }
+
+    func isValidOption(row: Int, column: Int) -> Bool {
+        return !inRow(row) && !inColumn(column) && !inSquare(row: row, column: column)
+    }
+
+    private func inRow(_ row: Int) -> Bool {
+        for index in 0..<9 {
+            switch board[row][index] {
+                case .fixed(let number), .selected(let number):
+                    if number == mark {
+                        return true
+                    }
+                case .options(_):
+                    break
+            }
+        }
+        return false
+    }
+
+    private func inColumn(_ column: Int) -> Bool {
+        for index in 0..<9 {
+            switch board[index][column] {
+                case .fixed(let number), .selected(let number):
+                    if number == mark {
+                        return true
+                    }
+                case .options(_):
+                    break
+            }
+        }
+        return false
+    }
+
+    private func inSquare(row: Int, column: Int) -> Bool {
+        let topRow = row / 3 * 3
+        let leftColumn = column / 3 * 3
+        for rowOffset in 0..<3 {
+            for columnOffset in 0..<3 {
+                switch board[topRow + rowOffset][leftColumn + columnOffset] {
+                case .fixed(let number), .selected(let number):
+                    if number == mark {
+                        return true
+                    }
+                case .options(_):
+                    break
+                }
+            }
+        }
+        return false
     }
 
     init() {
