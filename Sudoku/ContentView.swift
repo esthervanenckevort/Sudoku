@@ -20,7 +20,7 @@ struct ContentView: View {
 //            .padding()
 //            .frame(maxWidth: .infinity, maxHeight: .infinity)
 //        }
-        Board(game: model.newGame())
+        GameView(game: model.newGame())
     }
 }
 

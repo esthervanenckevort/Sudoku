@@ -15,7 +15,7 @@ class Game: ObservableObject {
     @Published var board = [[Value]]()
     @Published var annotating = false
     @Published var highlighting = false
-    @Published var mark: Int = 0
+    @Published var mark: Int = 1
 
     func mark(row: Int, column: Int) {
         switch board[row][column] {
@@ -47,6 +47,7 @@ class Game: ObservableObject {
         }
         self.puzzle = puzzle
         board = [[Value]]()
+        mark = Int.random(in: 1...9)
         for index in 0..<81 {
             if index % 9 == 0 {
                 board.append([Value]())

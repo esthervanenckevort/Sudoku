@@ -12,10 +12,11 @@ struct NumberGrid: View {
     @Binding var number: Int
     var body: some View {
         Grid(rows: 3, columns: 3) { (row, column) in
-            Cell<Number>(tapAction:  { self.number = row * 3 + column + 1 }) {
+            Cell<Number> {
                 let value = row * 3 + column + 1
                 return Number(selectedNumber: self.$number, value: value)
-            }
+                }.contentShape(Rectangle())
+                .onTapGesture { self.number = row * 3 + column + 1 }
         }
     }
 }
@@ -24,8 +25,12 @@ struct Number: View {
     var value: Int
 
     var body: some View {
-        Text("\(value)")
-            .background(value == self.selectedNumber ? Color.yellow : Color.clear)
+        ZStack {
+            Rectangle()
+                .frame(width: 45, height: 45)
+                .foregroundColor(value == self.selectedNumber ? Color.yellow : Color.clear)
+            Text("\(value)")
+        }
     }
 
 }
@@ -33,7 +38,7 @@ struct Number: View {
 #if DEBUG
 struct NumberGrid_Previews: PreviewProvider {
     static var previews: some View {
-        NumberGrid(number: .constant(0))
+        NumberGrid(number: .constant(1))
     }
 }
 #endif

@@ -12,7 +12,6 @@ struct Cell<Content>: View where Content: View {
     var frame = CGSize(width: 50, height: 50)
     var border: Color? = .gray
     var highlight: Color? = .clear
-    var tapAction: () -> Void
     var contentProvider: () -> Content
     var body: some View {
         contentProvider()
@@ -20,14 +19,13 @@ struct Cell<Content>: View where Content: View {
             .padding(1)
             .frame(width: frame.width, height: frame.height, alignment: .center)
             .border(border ?? Color.clear)
-            .onTapGesture(count: 1, perform: self.tapAction)
     }
 }
 
 #if DEBUG
 struct Cell_Previews: PreviewProvider {
     static var previews: some View {
-        Cell(tapAction: { print("Tapped")}) {
+        Cell() {
             Text("1")
         }
     }

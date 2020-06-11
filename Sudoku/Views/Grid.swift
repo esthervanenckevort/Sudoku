@@ -14,7 +14,7 @@ struct Grid<Cell>: View where Cell: View{
     var border: Color? = .clear
     let cellProvider: (Int, Int) -> Cell
     var body: some View {
-        return VStack {
+        return VStack(spacing: 0) {
             ForEach(0..<rows) { (row) in
                 HStack(spacing: 0) {
                     ForEach(0..<self.columns) { (column) in
@@ -30,7 +30,7 @@ struct Grid<Cell>: View where Cell: View{
 struct Grid_Previews: PreviewProvider {
     static var previews: some View {
         Grid(rows: 3, columns: 3) { (row, column) in
-            return Cell(tapAction: {}) {
+            return Cell {
                 Text("\(row * 3 + column + 1)")
             }
         }

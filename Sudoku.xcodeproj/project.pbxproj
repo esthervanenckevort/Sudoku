@@ -15,9 +15,12 @@
 		EB68E1FB2484F3E0000B7BE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB68E1F92484F3E0000B7BE5 /* Main.storyboard */; };
 		EB68E2052484F408000B7BE5 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E2042484F408000B7BE5 /* Cell.swift */; };
 		EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E2082484F72A000B7BE5 /* Grid.swift */; };
-		EB68E20B2484FA75000B7BE5 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E20A2484FA75000B7BE5 /* Board.swift */; };
+		EB68E20B2484FA75000B7BE5 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E20A2484FA75000B7BE5 /* GameView.swift */; };
 		EB980A70248D20CB00D8B4E1 /* SudokuKit in Frameworks */ = {isa = PBXBuildFile; productRef = EB980A6F248D20CB00D8B4E1 /* SudokuKit */; };
 		EB980A74248D227100D8B4E1 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB980A73248D227100D8B4E1 /* MainScreen.swift */; };
+		EBC0007524922F2000C2C245 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007424922F2000C2C245 /* BoardCell.swift */; };
+		EBC0007724922F7000C2C245 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007624922F7000C2C245 /* SquareView.swift */; };
+		EBC000792492300400C2C245 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC000782492300400C2C245 /* BoardView.swift */; };
 		EBE795E62491472B0011B8A7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE795E52491472B0011B8A7 /* Game.swift */; };
 		EBE795E8249147FD0011B8A7 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE795E7249147FD0011B8A7 /* Value.swift */; };
 /* End PBXBuildFile section */
@@ -34,8 +37,11 @@
 		EB68E1FD2484F3E0000B7BE5 /* Sudoku.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sudoku.entitlements; sourceTree = "<group>"; };
 		EB68E2042484F408000B7BE5 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		EB68E2082484F72A000B7BE5 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
-		EB68E20A2484FA75000B7BE5 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		EB68E20A2484FA75000B7BE5 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EB980A73248D227100D8B4E1 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		EBC0007424922F2000C2C245 /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
+		EBC0007624922F7000C2C245 /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
+		EBC000782492300400C2C245 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		EBE795E52491472B0011B8A7 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		EBE795E7249147FD0011B8A7 /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,8 +103,11 @@
 			children = (
 				EB68E2042484F408000B7BE5 /* Cell.swift */,
 				EB68E2082484F72A000B7BE5 /* Grid.swift */,
-				EB68E20A2484FA75000B7BE5 /* Board.swift */,
+				EB68E20A2484FA75000B7BE5 /* GameView.swift */,
+				EBC000782492300400C2C245 /* BoardView.swift */,
 				EB181DDA24915F3100887D2F /* NumberGrid.swift */,
+				EBC0007424922F2000C2C245 /* BoardCell.swift */,
+				EBC0007624922F7000C2C245 /* SquareView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,13 +199,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBC0007524922F2000C2C245 /* BoardCell.swift in Sources */,
 				EB980A74248D227100D8B4E1 /* MainScreen.swift in Sources */,
 				EB68E1F32484F3DE000B7BE5 /* ContentView.swift in Sources */,
 				EBE795E62491472B0011B8A7 /* Game.swift in Sources */,
+				EBC0007724922F7000C2C245 /* SquareView.swift in Sources */,
 				EBE795E8249147FD0011B8A7 /* Value.swift in Sources */,
 				EB68E1F12484F3DE000B7BE5 /* AppDelegate.swift in Sources */,
-				EB68E20B2484FA75000B7BE5 /* Board.swift in Sources */,
+				EB68E20B2484FA75000B7BE5 /* GameView.swift in Sources */,
 				EB68E2052484F408000B7BE5 /* Cell.swift in Sources */,
+				EBC000792492300400C2C245 /* BoardView.swift in Sources */,
 				EB181DDB24915F3100887D2F /* NumberGrid.swift in Sources */,
 				EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */,
 			);
