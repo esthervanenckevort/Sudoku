@@ -15,11 +15,12 @@ struct GameView: View {
     var body: some View {
         return HStack(alignment: .top) {
             BoardView(game: game)
+                .padding()
             VStack(alignment: .leading) {
                 NumberGrid(number: $game.mark)
                 Toggle("Annotating", isOn: $game.annotating)
                 Toggle("Highlighting", isOn: $game.highlighting)
-            }
+            }.padding([.top, .trailing, .bottom])
         }
     }
 }
