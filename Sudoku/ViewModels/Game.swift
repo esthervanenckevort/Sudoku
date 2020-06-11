@@ -48,48 +48,42 @@ class Game: ObservableObject {
 
     private func inRow(_ row: Int) -> Bool {
         for index in 0..<9 {
-            switch board[row][index] {
-                case .fixed(let number), .selected(let number):
-                    if number == mark {
-                        return true
-                    }
-                case .options(_):
-                    break
-            }
+            guard check(row: row, column: index) else { continue }
+            return true
         }
         return false
     }
 
     private func inColumn(_ column: Int) -> Bool {
         for index in 0..<9 {
-            switch board[index][column] {
-                case .fixed(let number), .selected(let number):
-                    if number == mark {
-                        return true
-                    }
-                case .options(_):
-                    break
-            }
+            guard check(row: index, column: column) else { continue }
+            return true
         }
         return false
     }
 
     private func inSquare(row: Int, column: Int) -> Bool {
         let topRow = row / 3 * 3
+        let bottomRow = topRow + 2
         let leftColumn = column / 3 * 3
-        for rowOffset in 0..<3 {
-            for columnOffset in 0..<3 {
-                switch board[topRow + rowOffset][leftColumn + columnOffset] {
-                case .fixed(let number), .selected(let number):
-                    if number == mark {
-                        return true
-                    }
-                case .options(_):
-                    break
-                }
+        let rightColumn = leftColumn + 2
+        
+        for row in topRow...bottomRow {
+            for column in leftColumn...rightColumn {
+                guard check(row: row, column: column) else { continue }
+                return true
             }
         }
         return false
+    }
+
+    private func check(row: Int, column: Int) -> Bool {
+        switch board[row][column] {
+        case .fixed(let number), .selected(let number):
+            return number == mark
+        case .options(_):
+            return false
+        }
     }
 
     init() {
