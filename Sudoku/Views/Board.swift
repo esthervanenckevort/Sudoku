@@ -53,36 +53,43 @@ struct BoardCell: View {
     var column: Int
     var body: some View {
         let value = game.board[row][column]
+        var view: AnyView
         switch value {
         case .fixed(let number):
-            return AnyView(Text("\(number)")
-                .font(.title)
-                .foregroundColor(.black)
-                .frame(width: 45, height: 45)
-                .border(Color.gray, width: 1))
+            view = AnyView(ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                    Text("\(number)")
+                        .font(.title)
+                        .foregroundColor(.black)
+                })
         case .options(let numbers):
-            let cell = Grid<Text>(rows: 3, columns: 3) { (cellRow, cellColumn) in
-                let option = cellRow * 3 + cellColumn + 1
-                return Text(numbers.contains(option) ? "\(option)" : " ")
-                    .foregroundColor(.gray)
-                    .font(.footnote)
-            }
-            return AnyView(
-                cell.frame(width: 45, height: 45)
-                    .border(Color.gray, width: 1)
-                    .onTapGesture {
-                        self.game.mark(row: self.row, column: self.column)
-            })
+            view = AnyView(
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                    Grid<Text>(rows: 3, columns: 3) { (cellRow, cellColumn) in
+                        let option = cellRow * 3 + cellColumn + 1
+                        return Text(numbers.contains(option) ? "\(option)" : " ")
+                            .foregroundColor(.gray)
+                            .font(.footnote)
+                    }
+                })
         case .selected(let number):
-            return AnyView(Text("\(number)")
-                .font(.title)
-                .foregroundColor(.blue)
-                .frame(width: 45, height: 45)
-                .border(Color.gray, width: 1)
-                .onTapGesture {
-                    self.game.mark(row: self.row, column: self.column)
-            })
+            view = AnyView(
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.white)
+                    Text("\(number)")
+                        .foregroundColor(.blue)
+                        .font(.title)
+                })
         }
+        return view.frame(width: 45, height: 45)
+            .border(Color.gray, width: 1)
+            .onTapGesture {
+                self.game.mark(row: self.row, column: self.column)
+            }
     }
 }
 

@@ -18,31 +18,27 @@ class Game: ObservableObject {
     @Published var mark: Int = 0
 
     func mark(row: Int, column: Int) {
-        objectWillChange.send()
-        print("mark \(mark) (\(row), \(column))")
         switch board[row][column] {
-        case .fixed(let value):
-            print("ignoring  \(row), \(column) has fixed value \(value)")
+        case .fixed(_):
             return
         case .options(var values):
             if annotating {
-                print("annotating \(row), \(column) with: \(mark)")
-                values.insert(mark)
+                values.toggle(mark)
                 board[row][column] = .options(values)
             } else {
-                print("solving  \(row), \(column) with: \(mark)")
                 board[row][column] = .selected(mark)
             }
-        case .selected(_):
-            if annotating {
-                print("annotating \(row), \(column) with: \(mark)")
-                board[row][column] = .options(Set([mark]))
+        case .selected(let value):
+            if value != mark {
+                if annotating {
+                    board[row][column] = .options(Set([mark]))
+                } else {
+                    board[row][column] = .selected(mark)
+                }
             } else {
-                print("solving  \(row), \(column) with: \(mark)")
-                board[row][column] = .selected(mark)
+                board[row][column] = .options(Set.empty)
             }
         }
-        print(board)
     }
 
     init() {
@@ -50,7 +46,6 @@ class Game: ObservableObject {
             fatalError("Failed to generate a new puzzle.")
         }
         self.puzzle = puzzle
-        print(puzzle.puzzle)
         board = [[Value]]()
         for index in 0..<81 {
             if index % 9 == 0 {
@@ -58,6 +53,17 @@ class Game: ObservableObject {
             }
             let cell = puzzle.puzzle[index] == 0 ? Value.options(Set()) : Value.fixed(puzzle.puzzle[index])
             board[index / 9].append(cell)
+        }
+    }
+}
+
+extension Set {
+    static var empty: Set { return Self() }
+    mutating func toggle(_ value: Element) {
+        if contains(value) {
+            remove(value)
+        } else {
+            insert(value)
         }
     }
 }
