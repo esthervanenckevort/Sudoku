@@ -13,7 +13,7 @@ struct BoardCell: View {
     var row: Int
     var column: Int
     var body: some View {
-        let value = game.board[row][column]
+        let value = game.valueAt(row: row, column: column)
         var view: AnyView
         switch value {
         case .fixed(let number):
@@ -24,7 +24,7 @@ struct BoardCell: View {
                         .font(.title)
                         .foregroundColor(color(for: number) ?? .black)
                 })
-        case .options(let numbers):
+        case .annotations(let numbers):
             view = AnyView(
                 ZStack {
                     Rectangle()
@@ -37,7 +37,7 @@ struct BoardCell: View {
                         }
                     }
                 })
-        case .selected(let number):
+        case .solution(let number):
             view = AnyView(
                 ZStack {
                     Rectangle()
@@ -63,13 +63,16 @@ struct BoardCell: View {
     }
 
     private var background: Color {
+        guard game.state == .playing else {
+            return game.isCorrect(row: row, column: column) ? .green : .red
+        }
         guard game.highlighting else {
             return .clear
         }
-        switch game.board[row][column] {
-        case .fixed(_), .selected(_):
+        switch game.valueAt(row: row, column: column) {
+        case .fixed(_), .solution(_):
             return .clear
-        case .options(_):
+        case .annotations(_):
             return game.isValidOption(row: row, column: column) ? .white : .clear
         }
     }

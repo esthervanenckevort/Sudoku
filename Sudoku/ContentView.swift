@@ -10,17 +10,8 @@ import SwiftUI
 import SudokuKit
 
 struct ContentView: View {
-    let model = MainScreen()
-
     var body: some View {
-//        NavigationView {
-//            NavigationLink(destination: Board(game: model.newGame())) {
-//                Text("New Game")
-//            }
-//            .padding()
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        }
-        GameView(game: model.newGame())
+        GameView(game: Game())
     }
 }
 

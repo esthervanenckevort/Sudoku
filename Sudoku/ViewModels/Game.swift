@@ -12,104 +12,45 @@ import SudokuKit
 import SwiftUI
 
 class Game: ObservableObject {
-    private var puzzle: Puzzle
-    @Published var board = [[Value]]()
-    @Published var annotating = false
-    @Published var highlighting = false
-    @Published var mark: Int = 1
+    @Published private var playingBoard: PlayingBoard
+    @Published var annotating: Bool
+    @Published var highlighting: Bool
+    @Published var mark: Int
+    var state: PlayingBoard.GameState {
+        playingBoard.state
+    }
 
+    func valueAt(row: Int, column: Int) -> PlayingBoard.CellState {
+        playingBoard[row, column]
+    }
+    
     func mark(row: Int, column: Int) {
-        switch board[row][column] {
-        case .fixed(_):
-            return
-        case .options(var values):
-            if annotating {
-                values.toggle(mark)
-                board[row][column] = .options(values)
-            } else {
-                board[row][column] = .selected(mark)
-            }
-        case .selected(let value):
-            if value != mark {
-                if annotating {
-                    board[row][column] = .options(Set([mark]))
-                } else {
-                    board[row][column] = .selected(mark)
-                }
-            } else {
-                board[row][column] = .options(Set.empty)
-            }
-        }
+        playingBoard.mark(row: row, column: column, with: mark, asAnnotation: annotating)
+    }
+
+    func check() {
+        _ = playingBoard.submit()
+    }
+
+    func newGame() {
+        playingBoard = PlayingBoard()
+        annotating = false
+        highlighting = false
+        mark = Int.random(in: 1...9)
+    }
+
+    func isCorrect(row: Int, column: Int) -> Bool {
+        return playingBoard.isCorrect(row: row, column: column) ?? false
     }
 
     func isValidOption(row: Int, column: Int) -> Bool {
-        return !inRow(row) && !inColumn(column) && !inSquare(row: row, column: column)
-    }
-
-    private func inRow(_ row: Int) -> Bool {
-        for index in 0..<9 {
-            guard check(row: row, column: index) else { continue }
-            return true
-        }
-        return false
-    }
-
-    private func inColumn(_ column: Int) -> Bool {
-        for index in 0..<9 {
-            guard check(row: index, column: column) else { continue }
-            return true
-        }
-        return false
-    }
-
-    private func inSquare(row: Int, column: Int) -> Bool {
-        let topRow = row / 3 * 3
-        let bottomRow = topRow + 2
-        let leftColumn = column / 3 * 3
-        let rightColumn = leftColumn + 2
-        
-        for row in topRow...bottomRow {
-            for column in leftColumn...rightColumn {
-                guard check(row: row, column: column) else { continue }
-                return true
-            }
-        }
-        return false
-    }
-
-    private func check(row: Int, column: Int) -> Bool {
-        switch board[row][column] {
-        case .fixed(let number), .selected(let number):
-            return number == mark
-        case .options(_):
-            return false
-        }
+        return playingBoard.isValidOption(value: mark, forRow: row, column: column)
     }
 
     init() {
-        guard let puzzle = Puzzle() else {
-            fatalError("Failed to generate a new puzzle.")
-        }
-        self.puzzle = puzzle
-        board = [[Value]]()
+        playingBoard = PlayingBoard()
+        annotating = false
+        highlighting = false
         mark = Int.random(in: 1...9)
-        for index in 0..<81 {
-            if index % 9 == 0 {
-                board.append([Value]())
-            }
-            let cell = puzzle.puzzle[index] == 0 ? Value.options(Set()) : Value.fixed(puzzle.puzzle[index])
-            board[index / 9].append(cell)
-        }
-    }
-}
-
-extension Set {
-    static var empty: Set { return Self() }
-    mutating func toggle(_ value: Element) {
-        if contains(value) {
-            remove(value)
-        } else {
-            insert(value)
-        }
     }
 }

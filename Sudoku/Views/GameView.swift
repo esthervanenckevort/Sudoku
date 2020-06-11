@@ -20,6 +20,16 @@ struct GameView: View {
                 NumberGrid(number: $game.mark)
                 Toggle("Annotating", isOn: $game.annotating)
                 Toggle("Highlighting", isOn: $game.highlighting)
+                Spacer()
+                if game.state == .playing {
+                    Button("Check solution") {
+                        self.game.check()
+                    }
+                } else {
+                    Button("New game") {
+                        self.game.newGame()
+                    }
+                }
             }.padding([.top, .trailing, .bottom])
         }
     }
