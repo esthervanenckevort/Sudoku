@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct Square: View {
-    @EnvironmentObject private var game: Game
     var row: Int
     var column: Int
     var body: some View {
@@ -26,7 +25,6 @@ struct Square: View {
 struct Square_Previews: PreviewProvider {
     static var previews: some View {
         Square(row: 0, column: 0)
-            .environmentObject(Game())
     }
 }
 #endif
