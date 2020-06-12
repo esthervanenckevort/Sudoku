@@ -10,8 +10,9 @@ import Foundation
 import Combine
 import SudokuKit
 import SwiftUI
+import AppKit
 
-class Game: ObservableObject {
+class Game: NSObject, ObservableObject {
     enum State {
         case playing, solved, invalid, designing
     }
@@ -108,6 +109,57 @@ class Game: ObservableObject {
         isUnique = false
     }
 
+    func save() {
+        let panel = NSSavePanel()
+        panel.delegate = self
+        panel.allowedFileTypes = ["sudoku"]
+        panel.allowsOtherFileTypes = false
+        panel.nameFieldStringValue = "MyBoard.sudoku"
+        let result = panel.runModal()
+        if result == .OK, let url = panel.url {
+            do {
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = [.withoutEscapingSlashes]
+                encoder.dateEncodingStrategy = .iso8601
+                var dataToSave: Data
+                switch mode {
+                case .playing(board: _):
+                    //                dataToSave = try encoder.encode(board)
+                    break
+                case .designing(board: let board):
+                    dataToSave = try encoder.encode(board.board)
+                    try dataToSave.write(to: url)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    func load() {
+        let panel = NSOpenPanel()
+        panel.delegate = self
+        panel.allowedFileTypes = ["sudoku"]
+        panel.allowsOtherFileTypes = false
+        let result = panel.runModal()
+        if result == .OK, let url = panel.url {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let puzzle = try decoder.decode([Int].self, from: data)
+                let board = SudokuKit.Board(board: puzzle)
+                mode = .designing(board: board)
+                annotating = false
+                highlighting = true
+                mark = 0
+                isUnique = false
+            } catch {
+                print(error)
+            }
+        }
+    }
+
     func playGame() {
         guard isUnique else { return }
         if case let Mode.designing(board: board) = mode {
@@ -160,4 +212,28 @@ class Game: ObservableObject {
         mark = Int.random(in: 1...9)
         isUnique = true
     }
+}
+
+extension Game: NSOpenSavePanelDelegate {
+//    func panel(_ sender: Any, userEnteredFilename filename: String, confirmed okFlag: Bool) -> String? {
+//        if okFlag {
+//            do {
+//            let encoder = JSONEncoder()
+//            encoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
+//            encoder.dateEncodingStrategy = .iso8601
+//            var dataToSave: Data
+//            switch mode {
+//            case .playing(board: _):
+////                dataToSave = try encoder.encode(board)
+//                break
+//            case .designing(board: let board):
+//                dataToSave = try encoder.encode(board.board)
+//                try dataToSave.write(to: URL(fileURLWithPath: filename))
+//            }
+//            } catch {
+//
+//            }
+//        }
+//        return filename
+//    }
 }

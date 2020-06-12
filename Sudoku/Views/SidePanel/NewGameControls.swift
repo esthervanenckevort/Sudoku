@@ -27,6 +27,9 @@ struct NewGameControls: View {
             Button("New game") {
                 self.game.newGame(given: Int(self.numberOfGivenTiles))
             }
+            Button("Load game") {
+                self.game.load()
+            }
             Button("Design  game") {
                 self.game.designGame()
             }

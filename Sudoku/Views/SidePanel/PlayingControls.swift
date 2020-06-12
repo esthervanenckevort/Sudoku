@@ -26,6 +26,9 @@ struct PlayingControls: View {
                 Button("Play game") {
                     self.game.playGame()
                 }
+                Button("Save puzzle") {
+                    self.game.save()
+                }
             }
         }
     }
