@@ -63,17 +63,24 @@ struct BoardCell: View {
     }
 
     private var background: Color {
-        guard game.state == .playing else {
-            return game.isCorrect(row: row, column: column) ? .green : .red
-        }
-        guard game.highlighting else {
-            return .clear
-        }
-        switch game.valueAt(row: row, column: column) {
-        case .fixed(_), .solution(_):
-            return .clear
-        case .annotations(_):
+        switch game.state {
+        case .designing:
             return game.isValidOption(row: row, column: column) ? .white : .clear
+        case .invalid:
+            return game.isCorrect(row: row, column: column) ?? false ? .green : .red
+        case .solved:
+            return .green
+        case .playing:
+            if game.highlighting {
+                switch game.valueAt(row: row, column: column) {
+                case .fixed(_), .solution(_):
+                    return .clear
+                case .annotations(_):
+                    return game.isValidOption(row: row, column: column) ? .white : .clear
+                }
+            } else {
+                return .clear
+            }
         }
     }
 

@@ -13,12 +13,19 @@ struct PlayingControls: View {
     var body: some View {
         Group {
             NumberGrid(number: $game.mark)
-            Toggle("Annotating", isOn: $game.annotating)
-            Toggle("Highlighting", isOn: $game.highlighting)
+            if game.state == .playing {
+                Toggle("Annotating", isOn: $game.annotating)
+                Toggle("Highlighting", isOn: $game.highlighting)
+            }
             Spacer()
 
             Button("Check solution") {
-                self.game.check()
+                _ = self.game.check()
+            }
+            if game.state == .designing && game.isUnique {
+                Button("Play game") {
+                    self.game.playGame()
+                }
             }
         }
     }

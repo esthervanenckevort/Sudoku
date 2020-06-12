@@ -12,7 +12,7 @@ struct SidePanel: View {
     @EnvironmentObject private var game: Game
     var body: some View {
        VStack(alignment: .leading) {
-            if game.state == .playing {
+        if game.state == .playing || game.state == .designing {
                 PlayingControls()
             }
             NewGameControls()
