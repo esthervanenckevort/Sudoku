@@ -13,10 +13,14 @@ struct GameView: View {
     @EnvironmentObject private var game: Game
 
     var body: some View {
-        return HStack(alignment: .top) {
-            Board()
-                .padding()
-            SidePanel()
+        if case let Game.Mode.disabled(message: message) = game.mode {
+            return AnyView(Text(message))
+        } else {
+            return AnyView(HStack(alignment: .top) {
+                Board()
+                    .padding()
+                SidePanel()
+            })
         }
     }
 }

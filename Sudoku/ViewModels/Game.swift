@@ -19,12 +19,13 @@ class Game: NSObject, ObservableObject {
     enum Mode {
         case playing(board: PlayingBoard)
         case designing(board: SudokuKit.Board)
+        case disabled(message: String)
     }
 
     @Published var annotating: Bool
     @Published var highlighting: Bool
     @Published var mark: Int
-    @Published private var mode: Mode
+    @Published var mode: Mode
     @Published private(set) var isUnique: Bool
 
     var state: State {
@@ -53,6 +54,8 @@ class Game: NSObject, ObservableObject {
                 return PlayingBoard.CellState.annotations([])
             }
             return PlayingBoard.CellState.fixed(value)
+        case .disabled:
+            return PlayingBoard.CellState.fixed(0)
         }
     }
     
@@ -71,6 +74,8 @@ class Game: NSObject, ObservableObject {
                 }
             }
             mode = .designing(board: board)
+        case .disabled:
+            break
         }
     }
 
@@ -88,16 +93,19 @@ class Game: NSObject, ObservableObject {
             let solutions = solver.solve(puzzle: board)
             isUnique = solutions.count == 1
             return isUnique
+        case .disabled:
+            return false
         }
     }
 
     func newGame(given: Int = 36) {
-        let board = PlayingBoard(given: given)
-        mode = .playing(board: board)
-        annotating = false
-        highlighting = false
-        mark = Int.random(in: 1...9)
-        isUnique = true
+        mode = .disabled(message: "Generating board")
+        DispatchQueue.global(qos: .userInitiated).async {
+            let board = PlayingBoard(given: given)
+            DispatchQueue.main.async {
+                self.startGame(board: board)
+            }
+        }
     }
 
     func designGame() {
@@ -129,6 +137,8 @@ class Game: NSObject, ObservableObject {
                 case .designing(board: let board):
                     dataToSave = try encoder.encode(board.board)
                     try dataToSave.write(to: url)
+                case .disabled:
+                    break
                 }
             } catch {
                 print(error)
@@ -163,14 +173,24 @@ class Game: NSObject, ObservableObject {
     func playGame() {
         guard isUnique else { return }
         if case let Mode.designing(board: board) = mode {
-            guard let puzzle = Puzzle(board: board) else { return }
-            let board = PlayingBoard(puzzle: puzzle)
-            mode = .playing(board: board)
-            annotating = false
-            highlighting = false
-            mark = Int.random(in: 1...9)
-            isUnique = true
+            mode = .disabled(message: "Validating board")
+            DispatchQueue.global(qos: .userInitiated).async {
+                guard let puzzle = Puzzle(board: board) else { return }
+                let board = PlayingBoard(puzzle: puzzle)
+                DispatchQueue.main.async {
+                    self.startGame(board: board)
+                }
+            }
+
         }
+    }
+
+    private func startGame(board: PlayingBoard) {
+        mode = .playing(board: board)
+        annotating = false
+        highlighting = false
+        mark = Int.random(in: 1...9)
+        isUnique = true
     }
 
     func isCorrect(row: Int, column: Int) -> Bool? {
@@ -186,6 +206,8 @@ class Game: NSObject, ObservableObject {
             return row.filter { $0 == value }.count == 1
                 && column.filter { $0 == value }.count == 1
                 && square.filter  { $0 == value }.count == 1
+        case .disabled:
+            return nil
         }
     }
 
@@ -201,6 +223,8 @@ class Game: NSObject, ObservableObject {
             return row.filter { $0 == mark }.count == 0
                 && column.filter { $0 == mark }.count == 0
                 && square.filter  { $0 == mark }.count == 0
+        case .disabled:
+            return false
         }
     }
 

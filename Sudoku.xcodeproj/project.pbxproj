@@ -373,7 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sudoku/Preview Content\"";
-				DEVELOPMENT_TEAM = SKQM4AW4YS;
+				DEVELOPMENT_TEAM = 6CW326W576;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Sudoku/Info.plist;
@@ -382,7 +382,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.allthingsdigital.Sudoku;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.allthingsdigital.Sudokus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -396,7 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sudoku/Preview Content\"";
-				DEVELOPMENT_TEAM = SKQM4AW4YS;
+				DEVELOPMENT_TEAM = 6CW326W576;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Sudoku/Info.plist;
@@ -405,7 +405,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.allthingsdigital.Sudoku;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.allthingsdigital.Sudokus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
