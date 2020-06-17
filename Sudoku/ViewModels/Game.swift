@@ -89,9 +89,14 @@ class Game: NSObject, ObservableObject {
             mode = .playing(board: board)
             return state == .solved
         case .designing(board: let board):
-            let solver = Solver()
-            let solutions = solver.solve(puzzle: board)
-            isUnique = solutions.count == 1
+            guard (board.board.reduce(0) { $1 != 0 ? $0 + 1 : $0 } >= 17 ) else { return false }
+            DispatchQueue.global(qos: .userInitiated).async {
+                let solver = Solver()
+                let solutions = solver.solve(puzzle: board)
+                DispatchQueue.main.async {
+                    self.isUnique = solutions.count == 1
+                }
+            }
             return isUnique
         case .disabled:
             return false
@@ -239,25 +244,5 @@ class Game: NSObject, ObservableObject {
 }
 
 extension Game: NSOpenSavePanelDelegate {
-//    func panel(_ sender: Any, userEnteredFilename filename: String, confirmed okFlag: Bool) -> String? {
-//        if okFlag {
-//            do {
-//            let encoder = JSONEncoder()
-//            encoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
-//            encoder.dateEncodingStrategy = .iso8601
-//            var dataToSave: Data
-//            switch mode {
-//            case .playing(board: _):
-////                dataToSave = try encoder.encode(board)
-//                break
-//            case .designing(board: let board):
-//                dataToSave = try encoder.encode(board.board)
-//                try dataToSave.write(to: URL(fileURLWithPath: filename))
-//            }
-//            } catch {
-//
-//            }
-//        }
-//        return filename
-//    }
+
 }

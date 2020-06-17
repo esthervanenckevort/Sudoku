@@ -17,8 +17,6 @@ struct PlayingControls: View {
                 Toggle("Annotating", isOn: $game.annotating)
                 Toggle("Highlighting", isOn: $game.highlighting)
             }
-            Spacer()
-
             Button("Check solution") {
                 _ = self.game.check()
             }

@@ -14,7 +14,17 @@ struct GameView: View {
 
     var body: some View {
         if case let Game.Mode.disabled(message: message) = game.mode {
-            return AnyView(Text(message))
+            return AnyView(
+                HStack(alignment: .top) {
+                    VStack {
+                        Text(message)
+                            .font(.title)
+                            .padding()
+                            .background(Color.yellow)
+                            .frame(maxWidth: .infinity)
+                    }
+                    SidePanel()
+            })
         } else {
             return AnyView(HStack(alignment: .top) {
                 Board()

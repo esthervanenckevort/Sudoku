@@ -13,7 +13,6 @@ struct NewGameControls: View {
     @State private var numberOfGivenTiles = 36.0
     var body: some View {
         Group {
-            Spacer()
             Slider(value: $numberOfGivenTiles, in: 17...46, step: 1)
             HStack {
                 Text("Given tiles:")

@@ -11,10 +11,11 @@ import SwiftUI
 struct SidePanel: View {
     @EnvironmentObject private var game: Game
     var body: some View {
-       VStack(alignment: .leading) {
-        if game.state == .playing || game.state == .designing {
+        VStack(alignment: .leading) {
+            if game.state == .playing || game.state == .designing {
                 PlayingControls()
             }
+            Spacer()
             NewGameControls()
         }.padding([.top, .trailing, .bottom])
     }
