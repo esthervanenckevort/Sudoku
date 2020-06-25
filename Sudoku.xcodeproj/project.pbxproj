@@ -15,6 +15,7 @@
 		EB68E2052484F408000B7BE5 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E2042484F408000B7BE5 /* Cell.swift */; };
 		EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E2082484F72A000B7BE5 /* Grid.swift */; };
 		EB68E20B2484FA75000B7BE5 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68E20A2484FA75000B7BE5 /* GameView.swift */; };
+		EB7202FA24A4F1BB0008C512 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7202F924A4F1BB0008C512 /* Message.swift */; };
 		EB980A70248D20CB00D8B4E1 /* SudokuKit in Frameworks */ = {isa = PBXBuildFile; productRef = EB980A6F248D20CB00D8B4E1 /* SudokuKit */; };
 		EBC0007524922F2000C2C245 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007424922F2000C2C245 /* BoardCell.swift */; };
 		EBC0007724922F7000C2C245 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0007624922F7000C2C245 /* Square.swift */; };
@@ -37,6 +38,7 @@
 		EB68E2042484F408000B7BE5 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		EB68E2082484F72A000B7BE5 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		EB68E20A2484FA75000B7BE5 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		EB7202F924A4F1BB0008C512 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EBC0007424922F2000C2C245 /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 		EBC0007624922F7000C2C245 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		EBC000782492300400C2C245 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				EB68E2042484F408000B7BE5 /* Cell.swift */,
 				EB68E2082484F72A000B7BE5 /* Grid.swift */,
+				EB7202F924A4F1BB0008C512 /* Message.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				EB68E20B2484FA75000B7BE5 /* GameView.swift in Sources */,
 				EB68E2052484F408000B7BE5 /* Cell.swift in Sources */,
 				EBC0007B2492984900C2C245 /* PlayingControls.swift in Sources */,
+				EB7202FA24A4F1BB0008C512 /* Message.swift in Sources */,
 				EBC000792492300400C2C245 /* Board.swift in Sources */,
 				EB181DDB24915F3100887D2F /* NumberGrid.swift in Sources */,
 				EB68E2092484F72A000B7BE5 /* Grid.swift in Sources */,

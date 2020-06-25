@@ -13,27 +13,19 @@ struct GameView: View {
     @EnvironmentObject private var game: Game
 
     var body: some View {
-        if case let Game.Mode.disabled(message: message) = game.mode {
-            return AnyView(
+        Group {
+            if case Game.Mode.disabled(message: let message) = game.mode {
                 HStack(alignment: .top) {
-                    VStack {
-                        Spacer()
-                        Text(message)
-                            .font(.title)
-                            .padding()
-                            .background(Color.yellow)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                        Spacer()
-                    }
+                    Message(message: message)
                     SidePanel()
-            })
-        } else {
-            return AnyView(HStack(alignment: .top) {
-                Board()
-                    .padding()
-                SidePanel()
-            })
+                }
+            } else {
+                HStack(alignment: .top) {
+                    Board()
+                        .padding()
+                    SidePanel()
+                }
+            }
         }
     }
 }
