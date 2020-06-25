@@ -32,7 +32,7 @@ struct BoardCell: View {
                     Grid<Cell<Text>>(rows: 3, columns: 3) { (cellRow, cellColumn) in
                         let option = cellRow * 3 + cellColumn + 1
                         return Cell(size: CGSize(width: 15, height: 15), border: .clear) { Text(numbers.contains(option) ? "\(option)" : " ")
-                            .foregroundColor(self.color(for: option) ?? .gray)
+                            .foregroundColor(color(for: option) ?? .gray)
                             .font(.footnote)
                         }
                     }
@@ -51,7 +51,7 @@ struct BoardCell: View {
             .border(Color.gray, width: 1)
             .contentShape(Rectangle())
             .onTapGesture {
-                self.game.mark(row: self.row, column: self.column)
+                game.mark(row: self.row, column: self.column)
             }
     }
 

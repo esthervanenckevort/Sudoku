@@ -17,8 +17,8 @@ struct Grid<Cell>: View where Cell: View{
         return VStack(spacing: 0) {
             ForEach(0..<rows) { (row) in
                 HStack(spacing: 0) {
-                    ForEach(0..<self.columns) { (column) in
-                        self.cellProvider(row, column)
+                    ForEach(0..<columns) { (column) in
+                        cellProvider(row, column)
                     }
                 }
             }

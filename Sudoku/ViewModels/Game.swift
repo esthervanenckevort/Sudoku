@@ -91,7 +91,7 @@ class Game: NSObject, ObservableObject {
         case .designing(board: let board):
             guard (board.board.reduce(0) { $1 != 0 ? $0 + 1 : $0 } >= 17 ) else { return false }
             DispatchQueue.global(qos: .userInitiated).async {
-                let solver = Solver()
+                let solver = Sudoku()
                 let solutions = solver.solve(puzzle: board)
                 DispatchQueue.main.async {
                     self.isUnique = solutions.count == 1

@@ -17,11 +17,14 @@ struct GameView: View {
             return AnyView(
                 HStack(alignment: .top) {
                     VStack {
+                        Spacer()
                         Text(message)
                             .font(.title)
                             .padding()
                             .background(Color.yellow)
                             .frame(maxWidth: .infinity)
+                            .padding()
+                        Spacer()
                     }
                     SidePanel()
             })

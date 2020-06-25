@@ -16,21 +16,21 @@ struct NewGameControls: View {
             Slider(value: $numberOfGivenTiles, in: 17...46, step: 1)
             HStack {
                 Text("Given tiles:")
-                Text("\(Int(self.numberOfGivenTiles))")
+                Text("\(Int(numberOfGivenTiles))")
             }
-            if self.numberOfGivenTiles < 27 {
+            if numberOfGivenTiles < 27 {
                 Text("Warning, generating board may take a long time.")
                     .foregroundColor(.red)
                     .font(.footnote)
             }
             Button("New game") {
-                self.game.newGame(given: Int(self.numberOfGivenTiles))
+                game.newGame(given: Int(numberOfGivenTiles))
             }
             Button("Load game") {
-                self.game.load()
+                game.load()
             }
             Button("Design  game") {
-                self.game.designGame()
+                game.designGame()
             }
         }
     }

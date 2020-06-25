@@ -13,7 +13,7 @@ struct Square: View {
     var column: Int
     var body: some View {
         return Grid<BoardCell>(rows: 3, columns: 3) { (cellRow, cellColumn) in
-            let index = self.row * 27 + cellRow * 9 + self.column * 3 + cellColumn
+            let index = row * 27 + cellRow * 9 + column * 3 + cellColumn
             let row = index / 9
             let column = index % 9
             return BoardCell(row: row, column: column)
